@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/data", async (req, res) => {
-    const data = await db.query(`select email, code from users;`);
+    const data = await db.query(`select * from users;`);
     res.send(data.rows);
 });
 
