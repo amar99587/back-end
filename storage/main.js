@@ -22,6 +22,8 @@ exports.url = (req) => {
       const filePath = req.file.path;
       console.log("--URL--");
       console.log(filePath);
+      console.log(red);
+      console.log(formattedFilePath);
       const formattedFilePath = filePath.split('\\').slice(1).join('/');
       const imgUrl = `${req.protocol}://${req.get('host')}/${formattedFilePath}`;
       console.log(imgUrl);
