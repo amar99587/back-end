@@ -23,8 +23,8 @@ exports.url = (req) => {
       console.log("--URL--");
       console.log(filePath);
       console.log(req);
-      console.log(formattedFilePath);
       const formattedFilePath = filePath.split('\\').slice(1).join('/');
+      console.log(formattedFilePath);
       const imgUrl = `${req.protocol}://${req.get('host')}/${formattedFilePath}`;
       console.log(imgUrl);
       resolve(imgUrl);
