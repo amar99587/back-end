@@ -20,6 +20,8 @@ exports.process = multer({
 exports.url = (req) => {
     return new Promise((resolve, reject) => {
       const filePath = req.file.path;
+      console.log("--URL--");
+      console.log(filePath);
       const formattedFilePath = filePath.split('\\').slice(1).join('/');
       const imgUrl = `${req.protocol}://${req.get('host')}/${formattedFilePath}`;
       console.log(imgUrl);
