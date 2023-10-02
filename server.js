@@ -6,6 +6,8 @@ dotenv.config({ path: "config.env" });
 
 const db = require("./database/main");
 
+const storage = require("./storage/main");
+
 const app = express();
 
 app.use(express.json());
@@ -28,6 +30,13 @@ app.get("/data", async (req, res) => {
     const data = await db.query(`select * from users;`);
     res.send(data.rows);
 });
+
+app.post("/storage/image", storage.process.single("image"), async (req, res) => {
+    const result = await storage.url(req);
+    res.send(req.file ? result : "No file uploaded");
+});
+
+app.use('/', express.static('uploads'));
 
 app.listen(port = process.env.app_port, async () => {
     console.log(`1 - server listening on port ${port}`);
